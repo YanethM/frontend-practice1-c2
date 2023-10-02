@@ -33,12 +33,29 @@ export const ServicesList = ({ servicesParam }) => {
               <Grid container spacing={2}>
                 <Grid item xs={4} sm={4} md={4}>
                   <div className="img-content-grid">
-                    <p>Services</p>
+                    {servicesParam.length > 0 ? (
+                      servicesParam.map((service) => (
+                        <div key={service._id}>
+                          <img src={service.avatar} alt={service.nameService} />
+                        </div>
+                      ))
+                    ) : (
+                      <p>No hay servicios</p>
+                    )}
                   </div>
                 </Grid>
                 <Grid item xs={8} sm={8} md={8}>
                   <div className="text-content-grid">
-                    <p>Nombre y descripción</p>
+                    {servicesParam.length > 0 ? (
+                      servicesParam.map((service) => (
+                        <div key={service._id}>
+                          <p>{service.nameService}</p>
+                          <p>{service.serviceDescription}</p>
+                        </div>
+                      ))
+                    ) : (
+                      <p>No hay servicios</p>
+                    )}
                   </div>
                 </Grid>
               </Grid>
